@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/regstyle.css' %}">
+</head>
+<body>
+        <div class="container">
+           <div class="signupbox">
+
+               <div class="col2">
+                   <h2>Let's get started</h2>
+                   <span>Already have an account?<a href="#">Login</a></span><br>
+
+                   <form action="register" method="POST">
+                       {% csrf_token %}
+                       <input type="text" name="username" placeholder="Enter your username" class="input-field">
+                        <input type="text" name="fname" placeholder="Enter your First name" class="input-field">
+                        <input type="text" name="lname" placeholder="Enter your last name" class="input-field">
+                       <input type="email" name="email" placeholder="Enter your email" class="input-field">
+                       <input type="password" name="pass" placeholder="Enter password" class="input-field">
+                        <input type="password" name="cpass" placeholder="Confirm password" class="input-field">
+                       <div class="row">
+                           <input type="checkbox" checked>
+                           <span>I agree to the <a href="#">Terms and conditions</a></span>
+                       </div>
+                       <button type="submit">signup</button>
+                   </form>
+                   {% for msg in messages %}
+                   {{msg}}
+                   {% endfor %}
+               </div>
+           </div>
+        </div>
+</body>
+</html>
